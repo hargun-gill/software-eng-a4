@@ -4,6 +4,11 @@ package com.assignment4.busguidance;
  * Referennces:
  * https://www.geeksforgeeks.org/advance-java/writing-templates-for-test-cases-using-junit-5/
  * https://github.com/robsonagapito/unit-testing-java
+ * 
+ * Imports:
+ * File and FileWriter are used to clear the test TXT file before each test
+ * JUnit imports are used for @Test, @BeforeEach, and asserting;
+ * assert: w3 schools definition: "debugging tool used to verify that specific assumptions about your program's state are true at runtime."
  */
 import java.io.File;
 import java.io.FileWriter;
@@ -96,6 +101,9 @@ public class DriverTest {
         );
 
         assertTrue(repository.addDriver(firstDriver));
+        /*
+         * assertFalse means the method is expected to return false.
+         */
         assertFalse(repository.addDriver(duplicateDriver));
     }
 
@@ -265,15 +273,26 @@ public class DriverTest {
                 "12|Winterfell Road|Winterfell|North|Westeros",
                 "15-04-1995"
         );
-
+        /*
+         * Add original driver first.
+         */
         assertTrue(repository.addDriver(originalDriver));
+        /*
+         * Update should return false because name changed.
+         */
         assertFalse(repository.updateDriver("23@@4567AB", updatedDriver));
     }
+
 
     /**
      * D5 normal allowed case: If driverID and name stay the same, allowed fields can be updated.
      */
      
+    /*
+     * This test checks D5 valid update?
+     * If driverID and name stay the same, the allowed fields should update because assighnment doesnt state these to be immutable.
+     */
+
     @Test
     void updatingAllowedFieldsShouldBeAccepted() {
         Driver originalDriver = createValidDriver();
@@ -286,12 +305,21 @@ public class DriverTest {
                 "100|Castle Black Road|The Wall|North|Westeros",
                 "15-04-1995"
         );
-
+        /*
+         * Add the original driver.
+         */
         assertTrue(repository.addDriver(originalDriver));
+        /*
+         * Update should return true because driverID and name stayed the same.
+         */
         assertTrue(repository.updateDriver("23@@4567AB", updatedDriver));
-
+        /*
+         * Retrieve the driver again so the test can check that the new values were saved
+         */
         Driver savedDriver = repository.retrieveDriver("23@@4567AB");
-
+        /*
+         * assertEquals checks that the actual saved values match the expected updated values
+         */
         assertEquals(6, savedDriver.getExperienceYears());
         assertEquals("PublicTransport", savedDriver.getLicenseType());
         assertEquals("100|Castle Black Road|The Wall|North|Westeros", savedDriver.getAddress());

@@ -3,9 +3,14 @@ package com.assignment4.busguidance;
 /*
  * Reference used: https://github.com/daanvdh/JavaForger
   Driver class stores driver details needed in DriverRepo
+  Model/data class; no particular logic or rules are implemented here
  */
 
 public class Driver {
+    /*
+     * These are the fields needed for a Driver record 
+     * Each Driver object will store one value for each of these fields
+     */
     private String driverID;
     private String name;
     private int experienceYears;
@@ -15,10 +20,15 @@ public class Driver {
 
     /**
      * Tbhis creates Driver object with all needed driver details
-     */
+     * Example: new Driver("23@@4567AB", "Jon Snow", 5, "Heavy", "...", "15-04-1995")
+    */
 
     public Driver(String driverID, String name, int experienceYears,
                   String licenseType, String address, String birthdate) {
+        /*
+         * "this.driverID" means the driverID field that belongs to this object
+         * the plain "driverID" on the right side is the value passed 
+         */
         this.driverID = driverID;
         this.name = name;
         this.experienceYears = experienceYears;
