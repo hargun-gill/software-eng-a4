@@ -12,6 +12,10 @@ public class Driver {
     private String address;
     private String birthdate;
 
+    /**
+     * Tbhis will csreates Driver object with all needed driver details
+     */
+
     public Driver(String driverID, String name, int experienceYears,
                   String licenseType, String address, String birthdate) {
         this.driverID = driverID;
@@ -20,6 +24,9 @@ public class Driver {
         this.licenseType = licenseType;
         this.address = address;
         this.birthdate = birthdate;
+    }
+
+    public Driver() {
     }
 
     public String getDriverID() {
