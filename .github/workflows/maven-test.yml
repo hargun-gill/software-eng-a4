@@ -1,0 +1,32 @@
+# Following week 11 lecture part 4 template
+# Workflow name shown in the GitHub Actions tab
+name: GitHub Actions Java Test Workflow
+
+# Runing this workflow whenm code is pushed or a pull request is opened
+on:
+  push:
+  pull_request:
+
+jobs:
+  java-test: # job ID
+    runs-on: ubuntu-latest # Runs the job on  Ubuntu virtual machine
+
+    steps:
+      # Step 1: Check out the repo code so GitHub Actions can access it
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      # Step 2: Install Java 
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      # Step 3: Show the Java version in the logs
+      - name: Show Java version
+        run: java -version
+
+      # Step 4: Run all Maven tests
+      - name: Run Maven tests
+        run: mvn test

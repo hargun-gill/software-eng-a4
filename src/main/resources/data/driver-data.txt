@@ -1,0 +1,4 @@
+23@@4567AB;Jon Snow;5;Heavy;12|Winterfell Road|Winterfell|North|Westeros;15-04-1995
+45!!7890CD;Ned Stark;11;Heavy;1|Stark Street|Winterfell|North|Westeros;01-01-1970
+67$$2345GH;Tyrion Lannister;12;PublicTransport;3|Casterly Road|Casterly Rock|Westerlands|Westeros;11-11-1980
+89&&4567KL;Brienne Tarth;7;Heavy;44|Sapphire Road|Tarth|Stormlands|Westeros;21-03-1992
