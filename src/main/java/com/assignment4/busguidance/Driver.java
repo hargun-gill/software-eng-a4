@@ -1,7 +1,8 @@
 package com.assignment4.busguidance;
 
 /*
- * Driver class stores driver details needed in DriverRepo
+ * Reference used: https://github.com/daanvdh/JavaForger
+  Driver class stores driver details needed in DriverRepo
  */
 
 public class Driver {
@@ -26,8 +27,6 @@ public class Driver {
         this.birthdate = birthdate;
     }
 
-    public Driver() {
-    }
 
     public String getDriverID() {
         return driverID;
