@@ -1,4 +1,8 @@
 # Following week 11 lecture part 4 template
+# Following reference for code template. We did not directly copy paste from this source, 
+# but we referred to it and worked in specific code blocks in the formation of our mavebn-test file
+# Reference links: 
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Maven.gitlab-ci.yml
 # Workflow name shown in the GitHub Actions tab
 name: GitHub Actions Java Test Workflow
 
