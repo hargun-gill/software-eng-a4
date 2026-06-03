@@ -1,59 +1,54 @@
 package com.assignment4.busguidance;
 
 // Class; used to represent Bus object in system.
-// Stores information including: bus ID, bus name, assigned route, and passenger capacity.
+// Stores information including: bus ID, capacity, fuel level, and fuel type.
 public class Bus {
-    private int id;
-    private String name;
-    private String route;
+    private String busID;
     private int capacity;
+    private double fuelLevel;
+    private String fuelType; // Diesel, Hybrid, Electricity
 
     // Constructor; used to creates a new Bus object, and initialises all attributes.
-    public Bus(int id, String name, String route, int capacity) {
-        this.id = id;
-        this.name = name;
-        this.route = route;
+    // Example: new Bus("BUS001", 50, 85.5, "Diesel");
+    public Bus(String busID, int capacity, double fuelLevel, String fuelType) {
+        this.busID = busID;
         this.capacity = capacity;
+        this.fuelLevel = fuelLevel;
+        this.fuelType = fuelType;
     }
 
-    //  @return bus ID
-    public int getId() {
-        return id;
+    // returns bus ID
+    public String getBusID() {
+        return busID;
     }
 
-    // @return bus name
-    public String getName() {
-        return name;
-    }
-
-    // @return route
-    public String getRoute() {
-        return route;
-    }
-
-    // @return capacity
+    // returns capacity
     public int getCapacity() {
         return capacity;
     }
 
-    // Converts the Bus object into a text format (write to file)
-    // @return formatted String representation
-    @Override
-    public String toString() {
-        return id + "," + name + "," + route + "," + capacity;
+    // updates capacity
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
-    // Converts a line of text back into a Bus object (read from file)
-    // @return Bus object
-    public static Bus fromString(String data) {
-        // Split the line into separate values
-        String[] parts = data.split(",");
-        // Create and return a Bus object
-        return new Bus(
-                Integer.parseInt(parts[0]), // Bus ID
-                parts[1],                   // Bus name
-                parts[2],                   // Route
-                Integer.parseInt(parts[3])  // Capacity
-        );
+    // returns fuel level
+    public double getFuelLevel() {
+        return fuelLevel;
+    }
+
+    // updates fuel level
+    public void setFuelLevel(double fuelLevel) {
+        this.fuelLevel = fuelLevel;
+    }
+
+    // return fuel type
+    public String getFuelType() {
+        return fuelType;
+    }
+
+    // updates fuel type
+    public void setFuelType(String fuelType) {
+        this.fuelType = fuelType;
     }
 }
