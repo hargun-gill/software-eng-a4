@@ -3,6 +3,7 @@ package com.assignment4.busguidance;
 // Import necessary classes for file handling and collections
 import java.io.*;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.nio.file.*;
 import java.util.*;
 
@@ -171,7 +172,7 @@ public class BusRepository {
     }
 
     // Converts birthdate (DD-MM-YYYY) into age in years.
-    private int calculateAge(String birthdate) {
+    private static int calculateAge(String birthdate) {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-uuuu");
             LocalDate dob = LocalDate.parse(birthdate, formatter);
