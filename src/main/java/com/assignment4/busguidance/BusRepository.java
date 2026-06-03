@@ -113,7 +113,7 @@ public class BusRepository {
         if (busID == null) {
             return false;
         }
-        return busID.matches("\d{8}");
+        return busID.matches("\\d{8}");
     }
     
     // B2 - Capacity Update Restriction
