@@ -2,6 +2,7 @@ package com.assignment4.busguidance;
 
 // Import necessary classes for file handling and collections
 import java.io.*;
+import java.time.*;
 import java.nio.file.*;
 import java.util.*;
 
@@ -161,9 +162,24 @@ public class BusRepository {
         if (driver == null || bus == null) {
             return false;
         }
-        boolean ageCheck = isValidDriverAgeForBus(driver.getAge(), bus.getCapacity());
+        int age = calculateAge(driver.getBirthdate());
+        
+        boolean ageCheck = isValidDriverAgeForBus(age, bus.getCapacity());
         boolean experienceCheck = isValidElectricBusExperience(driver.getExperienceYears(), bus.getFuelType());
         boolean licenceCheck = isValidLicenceForBus(driver.getLicenseType(), bus.getFuelType());
         return ageCheck && experienceCheck && licenceCheck;
+    }
+
+    // Converts birthdate (DD-MM-YYYY) into age in years.
+    private int calculateAge(String birthdate) {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-uuuu");
+            LocalDate dob = LocalDate.parse(birthdate, formatter);
+            LocalDate today = LocalDate.now();
+            return Period.between(dob, today).getYears();
+    
+        } catch (Exception e) {
+            return -1; // invalid date
+        }
     }
 }
