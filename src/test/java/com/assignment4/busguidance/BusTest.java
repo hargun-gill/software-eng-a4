@@ -1,7 +1,6 @@
 package com.assignment4.busguidance;
 
 import org.junit.jupiter.api.Test;
-import validation.BusValidator;
 import static org.junit.jupiter.api.Assertions.*;
 
 /// Test class for validating the Bus class and its related functionalities.
@@ -10,34 +9,34 @@ public class BusTest {
     // Valid Bus ID: 8 digits
     @Test
     void validBusID() {
-        assertTrue(BusValidator.validBusID("12345678"));
+        assertTrue(BusRepository.isValidBusID("12345678"));
     }
     // Invalid Bus ID: 7 digits
     @Test
     void busIDTooShort() {
-        assertFalse(BusValidator.validBusID("1234567"));
+        assertFalse(BusRepository.isValidBusID("1234567"));
     }
     // Invalid Bus ID: contains letters
     @Test
     void busIDContainsLetters() {
-        assertFalse(BusValidator.validBusID("12AB5678"));
+        assertFalse(BusRepository.isValidBusID("12AB5678"));
     }
 
     // Testing for B2 - Capacity Update Restriction
     // Valid capacity update: decrease from 50 to 45
     @Test
     void decreaseCapacityAllowed() {
-        assertTrue(BusValidator.validCapacityUpdate(50, 45));
+        assertTrue(BusRepository.isValidCapacityUpdate(50, 45));
     }
     // Valid capacity update: same capacity of 50
     @Test
     void sameCapacityAllowed() {
-        assertTrue(BusValidator.validCapacityUpdate(50, 50));
+        assertTrue(BusRepository.isValidCapacityUpdate(50, 50));
     }
     // Invalid capacity update: increase from 50 to 55
     @Test
     void increaseCapacityRejected() {
-        assertFalse(BusValidator.validCapacityUpdate(50, 55));
+        assertFalse(BusRepository.isValidCapacityUpdate(50, 55));
     }
 
     // Testing for B3 - Driver Age Restriction
@@ -58,7 +57,7 @@ public class BusTest {
                 80,
                 "Diesel"
         );
-        assertTrue(BusValidator.validateAgeRestriction(49, bus));
+        assertTrue(BusRepository.isValidDriverAgeForBus(49, bus));
     }
     // Invalid age: 51 cannot drive a bus with capacity 50
     @Test
@@ -69,7 +68,7 @@ public class BusTest {
                 80,
                 "Diesel"
         );
-        assertFalse(BusValidator.validateAgeRestriction(51, bus));
+        assertFalse(BusRepository.isValidDriverAgeForBus(51, bus));
     }
     // Valid age: 60 can drive a bus with capacity 49
     @Test
@@ -80,7 +79,7 @@ public class BusTest {
                 80,
                 "Diesel"
         );
-        assertTrue(BusValidator.validateAgeRestriction(60, bus));
+        assertTrue(BusRepository.isValidDriverAgeForBus(60, bus));
     }
 
     // Testing for B4 - Electric Bus Restriction
@@ -101,7 +100,7 @@ public class BusTest {
                 100,
                 "Electricity"
         );
-        assertTrue(BusValidator.validateElectricBusExperience(driver, bus));
+        assertTrue(BusRepository.isValidElectricBusExperience(driver, bus));
     }
     // Invalid experience: 4 years cannot drive an electric bus
     @Test
@@ -120,7 +119,7 @@ public class BusTest {
                 100,
                 "Electricity"
         );
-        assertFalse(BusValidator.validateElectricBusExperience(driver, bus));
+        assertFalse(BusRepository.isValidElectricBusExperience(driver, bus));
     }
     // Valid experience: 15 years can drive an electric bus
     @Test
@@ -139,7 +138,7 @@ public class BusTest {
                 100,
                 "Electricity"
         );
-        assertTrue(BusValidator.validateElectricBusExperience(driver, bus));
+        assertTrue(BusRepository.isValidElectricBusExperience(driver, bus));
     }
 
     // Testing for B5 - Driver Licence Restriction
@@ -160,7 +159,7 @@ public class BusTest {
                 100,
                 "Electricity"
         );
-        assertTrue(BusValidator.validateLicenceRestriction(driver, bus));
+        assertTrue(BusRepository.isValidLicenceForBus(driver, bus));
     }
     // Valid licence: PublicTransport can drive a Hybrid bus
     @Test
@@ -179,7 +178,7 @@ public class BusTest {
                 100,
                 "Hybrid"
         );
-        assertTrue(BusValidator.validateLicenceRestriction(driver, bus));
+        assertTrue(BusRepository.isValidLicenceForBus(driver, bus));
     }
     // Invalid licence: Light cannot drive an electric bus
     @Test
@@ -198,6 +197,6 @@ public class BusTest {
                 100,
                 "Electricity"
         );
-        assertFalse(BusValidator.validateLicenceRestriction(driver, bus));
+        assertFalse(BusRepository.isValidLicenceForBus(driver, bus));
     }
 }
