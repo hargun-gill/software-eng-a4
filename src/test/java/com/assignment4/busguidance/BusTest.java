@@ -43,160 +43,50 @@ public class BusTest {
     // Valid age: 49 can drive a bus with capacity 50
     @Test
     void age49CanDriveCapacity50Bus() {
-        Driver driver = new Driver(
-                "34@@12#1AB",
-                "John",
-                5,
-                "Heavy",
-                "1|Main Street|Melbourne|VIC|Australia",
-                "01-01-1977"
-        );
-        Bus bus = new Bus(
-                "12345678",
-                50,
-                80,
-                "Diesel"
-        );
-        assertTrue(BusRepository.isValidDriverAgeForBus(49, bus));
+        assertTrue(BusRepository.isValidDriverAgeForBus(49, 50));
     }
     // Invalid age: 51 cannot drive a bus with capacity 50
     @Test
     void age51CannotDriveCapacity50Bus() {
-        Bus bus = new Bus(
-                "12345678",
-                50,
-                80,
-                "Diesel"
-        );
-        assertFalse(BusRepository.isValidDriverAgeForBus(51, bus));
+        assertFalse(BusRepository.isValidDriverAgeForBus(51, 50));
     }
     // Valid age: 60 can drive a bus with capacity 49
     @Test
     void age60CanDriveCapacity49Bus() {
-        Bus bus = new Bus(
-                "12345678",
-                49,
-                80,
-                "Diesel"
-        );
-        assertTrue(BusRepository.isValidDriverAgeForBus(60, bus));
+        assertTrue(BusRepository.isValidDriverAgeForBus(60, 49));
     }
 
     // Testing for B4 - Electric Bus Restriction
     // Valid experience: 5 years can drive an electric bus
     @Test
     void experienceFiveCanDriveElectricBus() {
-        Driver driver = new Driver(
-                "34@@12#1AB",
-                "John",
-                5,
-                "Heavy",
-                "1|Main Street|Melbourne|VIC|Australia",
-                "01-01-1990"
-        );
-        Bus bus = new Bus(
-                "12345678",
-                40,
-                100,
-                "Electricity"
-        );
-        assertTrue(BusRepository.isValidElectricBusExperience(driver, bus));
+        assertTrue(BusRepository.isValidElectricBusExperience(5, "Electricity"));
     }
     // Invalid experience: 4 years cannot drive an electric bus
     @Test
     void experienceFourCannotDriveElectricBus() {
-        Driver driver = new Driver(
-                "34@@12#1AB",
-                "John",
-                4,
-                "Heavy",
-                "1|Main Street|Melbourne|VIC|Australia",
-                "01-01-1990"
-        );
-        Bus bus = new Bus(
-                "12345678",
-                40,
-                100,
-                "Electricity"
-        );
-        assertFalse(BusRepository.isValidElectricBusExperience(driver, bus));
+        assertFalse(BusRepository.isValidElectricBusExperience(4, "Electricity"));
     }
     // Valid experience: 15 years can drive an electric bus
     @Test
     void experienceFifteenCanDriveElectricBus() {
-        Driver driver = new Driver(
-                "34@@12#1AB",
-                "John",
-                15,
-                "Heavy",
-                "1|Main Street|Melbourne|VIC|Australia",
-                "01-01-1990"
-        );
-        Bus bus = new Bus(
-                "12345678",
-                40,
-                100,
-                "Electricity"
-        );
-        assertTrue(BusRepository.isValidElectricBusExperience(driver, bus));
+        assertTrue(BusRepository.isValidElectricBusExperience(15, "Electricity"));
     }
 
     // Testing for B5 - Driver Licence Restriction
     // Valid licence: Heavy can drive an electric bus   
     @Test
     void heavyLicenceCanDriveElectricBus() {
-        Driver driver = new Driver(
-                "34@@12#1AB",
-                "John",
-                10,
-                "Heavy",
-                "1|Main Street|Melbourne|VIC|Australia",
-                "01-01-1990"
-        );
-        Bus bus = new Bus(
-                "12345678",
-                40,
-                100,
-                "Electricity"
-        );
-        assertTrue(BusRepository.isValidLicenceForBus(driver, bus));
+        assertTrue(BusRepository.isValidLicenceForBus("Heavy", "Electricity"));
     }
     // Valid licence: PublicTransport can drive a Hybrid bus
     @Test
     void publicTransportLicenceCanDriveHybridBus() {
-        Driver driver = new Driver(
-                "34@@12#1AB",
-                "John",
-                10,
-                "PublicTransport",
-                "1|Main Street|Melbourne|VIC|Australia",
-                "01-01-1990"
-        );
-        Bus bus = new Bus(
-                "12345678",
-                40,
-                100,
-                "Hybrid"
-        );
-        assertTrue(BusRepository.isValidLicenceForBus(driver, bus));
+        assertTrue(BusRepository.isValidLicenceForBus("PublicTransport", "Hybrid"));
     }
     // Invalid licence: Light cannot drive an electric bus
     @Test
     void lightLicenceCannotDriveElectricBus() {
-        Driver driver = new Driver(
-                "34@@12#1AB",
-                "John",
-                10,
-                "Light",
-                "1|Main Street|Melbourne|VIC|Australia",
-                "01-01-1990"
-        );
-        Bus bus = new Bus(
-                "12345678",
-                40,
-                100,
-                "Electricity"
-        );
-        assertFalse(BusRepository.isValidLicenceForBus(driver, bus));
+        assertFalse(BusRepository.isValidLicenceForBus("Light", "Electricity"));
     }
 }
