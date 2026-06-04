@@ -4,10 +4,10 @@
 ### src/main/java
 This folder contains the main Java code for the system
 
- `Driver.java' stores the details for one driver such as driver ID, name, experience years, licence type, address, and birthdate.
+ `Driver.java` stores the details for one driver such as driver ID, name, experience years, licence type, address, and birthdate.
  `DriverRepository.java` manages driver records. It can add, retrieve, update, and count drivers. checks the Driver rules D1 to D5
- `Bus.java` is for the bus details
- `BusRepository.java` is for managing bus records
+ `Bus.java` stores the details for one bus such as bus ID, capacity, fuel level, and fuel type.
+ `BusRepository.java` manages bus records. It can add, retrieve, update, and count buses. checks the Bus rules B1 to B5
 
 ### src/main/resources/data
 This folder contains the normal data files used by the program.
@@ -16,6 +16,7 @@ This folder contains the normal data files used by the program.
  `bus-data.txt` stores bus records
 
 Each driver is stored on one line using this format: driverID;name;experienceYears;licenseType;address;birthdate
+Each bus is stored on one line using this format: busID,capacity,fuelLevel,fuelType
 
 ### src/test/java
 This folder has the JUnit test files.
@@ -29,9 +30,10 @@ This folder has the JUnit test files.
 This folder has test-only data files.
 
  `driver-test-data.txt` is used by Driver unit tests
- `bus-test-data.txt` is used by Bus tests
+ `driver-integration-data.txt` is used by Driver integration tests
+ `bus-integration-data.txt` is used by Bus integration tests
 
-These files are separate from the real data files so testing doesnt changthe main program data.
+These files are separate from the real data files so testing doesnt change the main program data.
 
 ## Running Tests
 
